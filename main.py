@@ -1,10 +1,12 @@
-import pygame, pygame.locals, sys
+import pygame
+import pygame.locals
+import sys
 
 pygame.init()
 
-# Setup the window
+# Set up the window
 window = pygame.display.set_mode((600, 600), 0, 64)
-pygame.display.set_caption("Hello World Game - Alessandro")
+pygame.display.set_caption("PACMAN - @aleattene")
 
 # Global state variable
 Quit = False
