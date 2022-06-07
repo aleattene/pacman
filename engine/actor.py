@@ -4,15 +4,15 @@ class Actor:
         self.components = []
 
     def load(self):
-        for actor in self.components:
-            actor.load()
+        for component in self.components:
+            component.load()
 
     def render(self):
-        for actor in self.components:
-            actor.render()
+        for component in self.components:
+            component.render()
 
     # TO FIX: timing
     def update(self):
-        for actor in self.components:
-            actor.update()
+        for component in self.components:
+            component.update()
 
