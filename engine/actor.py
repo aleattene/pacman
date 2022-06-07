@@ -2,7 +2,6 @@ class Actor:
 
     def __init__(self):
         self.components = []
-        pass
 
     def load(self):
         for actor in self.components:
