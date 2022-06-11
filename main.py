@@ -1,6 +1,9 @@
 import pygame
 import pygame.locals
 import sys
+from engine.scene import Scene
+from engine.static_sprite_component import StaticSpriteComponent
+from engine.actor import Actor
 
 pygame.init()
 
@@ -8,8 +11,13 @@ pygame.init()
 window = pygame.display.set_mode((600, 600), 0, 64)
 pygame.display.set_caption("PACMAN - @aleattene")
 
-# Global state variable
+# Global variables
 Quit = False
+scene = Scene()
+component = StaticSpriteComponent("img.png", window)
+actor = Actor()
+actor.components.append(component)
+scene.actors.append(actor)
 
 
 def process_events():
@@ -22,7 +30,8 @@ def process_events():
 
 
 def update_game_logic():
-    # do nothing at this moment
+    global scene
+    scene.update()
     return
 
 
@@ -32,13 +41,15 @@ def render():
     WHITE = (255, 255, 255)
     window.fill(BLACK)
 
-    # Print hello world
-    font = pygame.font.SysFont(None, 48)
-    text = font.render('Hello Alessandro', True, WHITE)
-    textRect = text.get_rect()
-    textRect.centerx = window.get_rect().centerx
-    textRect.centery = window.get_rect().centery
-    window.blit(text, textRect)
+    scene.render(window)
+
+    # # Print hello world
+    # font = pygame.font.SysFont(None, 48)
+    # text = font.render('Hello Alessandro', True, WHITE)
+    # textRect = text.get_rect()
+    # textRect.centerx = window.get_rect().centerx
+    # textRect.centery = window.get_rect().centery
+    # window.blit(text, textRect)
 
     # Update the display with the new content of the window
     pygame.display.update()
