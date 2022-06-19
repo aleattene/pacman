@@ -17,21 +17,20 @@ class StaticSpriteComponent(Component):
     def load(self):
         self.image = pygame.image.load(self.asset_file_name)
 
-    def render(self):
+    def render(self, surface):
         rect = self.image.get_rect()
-        rect.centerx = self.x
-        rect.centery = self.y
+        rect.center_x = self.x
+        rect.center_y = self.y
+        surface.blit(self.image, rect)
 
     def update(self):
-        # surface???
         self.x = self.x + self.vx
         self.y = self.y + self.vy
-        #surface.blit(self.image,rect)
 
         # check out of rect
-        if not(0 < self.x < window.get_rect().width):
+        if not(0 < self.x < self.bounding_rect.width):
             # reverse direction
             self.vx = self.vx * -1
-        if not(0 < self.y < window.get_rect().height):
+        if not(0 < self.y < self.bounding_rect.height):
             # reverse direction
             self.vy = self.vy * -1

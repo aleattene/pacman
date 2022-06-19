@@ -9,15 +9,16 @@ pygame.init()
 
 # Set up the window
 window = pygame.display.set_mode((600, 600), 0, 64)
-pygame.display.set_caption("PACMAN - @aleattene")
+pygame.display.set_caption("PACMAN GAME- @aleattene")
 
 # Global variables
 Quit = False
 scene = Scene()
-component = StaticSpriteComponent("img.png", window)
+component = StaticSpriteComponent(".assets/img/pacman.png", window)
 actor = Actor()
 actor.components.append(component)
 scene.actors.append(actor)
+
 
 
 def process_events():
